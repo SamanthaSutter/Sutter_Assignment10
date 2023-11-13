@@ -1,6 +1,6 @@
-
 #include "Contact.h"
 #include <cstring>
+#include <iostream>
 
 // Default constructor
 Contact::Contact() {}
@@ -24,23 +24,29 @@ const char* Contact::getPhone() const {
 
 // Mutators
 void Contact::setFirstName(const char* fName) {
-    strncpy(firstName, fName, sizeof(firstName) - 1);
-    firstName[sizeof(firstName) - 1] = '\0';
+    strncpy_s(firstName, sizeof(firstName), fName, _TRUNCATE);
 }
 
 void Contact::setFullName(const char* lName, const char* fName) {
-    // Concatenate or seperate last name, comma, space, and first name
-    strcpy(fullName, lName);
-    strcat(fullName, ", ");
-    strcat(fullName, fName);
-    fullName[sizeof(fullName) - 1] = '\0'; 
+    // Concatenate or separate last name, comma, space, and first name
+    strcpy_s(fullName, sizeof(fullName), lName);
+    strcat_s(fullName, sizeof(fullName), ", ");
+    strcat_s(fullName, sizeof(fullName), fName);
+}
 
 void Contact::setLastName(const char* lName) {
-    strncpy(lastName, lName, sizeof(lastName) - 1);
-    lastName[sizeof(lastName) - 1] = '\0';
+    strncpy_s(lastName, sizeof(lastName), lName, _TRUNCATE);
 }
 
 void Contact::setPhone(const char* phoneNumber) {
-    strncpy(phone, phoneNumber, sizeof(phone) - 1);
-    phone[sizeof(phone) - 1] = '\0';
+    strncpy_s(phone, sizeof(phone), phoneNumber, _TRUNCATE);
+}
+
+// Display a single contact
+void Contact::displayEntry() const {
+    std::cout << "Last Name: " << getLastName() << std::endl;
+    std::cout << "First Name: " << getFirstName() << std::endl;
+    std::cout << "Phone: " << getPhone() << std::endl;
+    std::cout << "Full Name: " << getFullName() << std::endl;
+    std::cout << "--------------------------" << std::endl;
 }

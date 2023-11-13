@@ -28,8 +28,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\..\Documents\contact.txt">
-      <Filter>Source Files</Filter>
-    </Text>
+    <Text Include="Contacts.txt" />
   </ItemGroup>
 </Project>

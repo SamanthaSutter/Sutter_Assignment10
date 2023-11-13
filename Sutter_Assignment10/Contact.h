@@ -1,4 +1,3 @@
-// Contact.h
 #ifndef CONTACT_H
 #define CONTACT_H
 
@@ -24,6 +23,9 @@ public:
     void setFullName(const char* lName, const char* fName);
     void setLastName(const char* lName);
     void setPhone(const char* phoneNumber);
+
+    // Display a single contact
+    void displayEntry() const;
 };
 
 #endif  
